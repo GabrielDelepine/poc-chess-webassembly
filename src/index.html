@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <!-- widthwd
+- comment connecter GUI à chess.js
+- comment charger chess.js en ESM ? (article expliquant comment s'y prendre ? stratégy PR de Vite.js ?)
+- Y'a-t-il un projet mieux que chess.js à utiliser en WebAssembly?
+- Charger le webAssembly de stockFish
+- Comment connecter GUI à stockFish
+- trouver une belle image de backgroup (AI generated ?)
+dwwddw -->
+  <head>
+    <meta charset="utf-8" />
+    <title>POC Chess WebAssembly</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://unpkg.com/chessground@8.3.7/assets/chessground.base.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://unpkg.com/chessground@8.3.7/assets/chessground.brown.css"
+    />
+    <!-- Board theme -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://unpkg.com/chessground@8.3.7/assets/chessground.cburnett.css"
+    />
+    <!-- Pieces theme -->
+
+    <style>
+      #chessground {
+        width: 500px;
+        height: 500px;
+      }
+    </style>
+
+    <script type="importmap">
+      {
+        "imports": {
+          "chessground": "../node_modules/chessground/chessground.js",
+          "chess.js": "../node_modules/chess.js/dist/chess.js",
+          "standalone-web-chess": "../dist/index.js"
+        }
+      }
+    </script>
+    <script defer type="module">
+      import { init } from "standalone-web-chess"
+      init(document.getElementById("chessground"))
+    </script>
+  </head>
+
+  <body>
+    <section class="">
+      <div class="">
+        <div id="chessground"></div>
+      </div>
+    </section>
+
+    <noscript>Please enable Javascript</noscript>
+  </body>
+</html>

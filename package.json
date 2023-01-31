@@ -1,0 +1,32 @@
+{
+  "name": "standalone-web-chess",
+  "version": "0.0.1",
+  "description": "A standalone serverless Chess game with the Stockfish engine",
+  "type": "module",
+  "module": "./dist/index.js",
+  "typings": "./dist/index.d.ts",
+  "scripts": {
+    "format": "prettier --write src/**",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "tsc --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GabrielDelepine/poc-chess-webassembly.git"
+  },
+  "author": "Gabriel",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/GabrielDelepine/poc-chess-webassembly/issues"
+  },
+  "homepage": "https://github.com/GabrielDelepine/poc-chess-webassembly#readme",
+  "dependencies": {
+    "chess.js": "^1.0.0-beta.2",
+    "chessground": "^8.3.7"
+  },
+  "devDependencies": {
+    "@types/chess.js": "^0.13.4",
+    "prettier": "2.8.3",
+    "typescript": "^5.0.0-beta"
+  }
+}
