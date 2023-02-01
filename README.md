@@ -1,4 +1,5 @@
 ## Known bugs
+
 - promotion
 
 ## Dependencies
@@ -15,3 +16,10 @@ distributed only under the GPL. **You must release your source code** to the
 users of your website.
 
 Please read more about GPL for JavaScript on [greendrake.info](https://greendrake.info/publications/js-gpl).
+
+## resources and others
+
+https://lichess.org/blog/YDOKRxQAACgAREB3/stockfish-13-nnue-on-lichess
+http://www.computerchess.org.uk/ccrl/4040/
+https://lichess.org/blog/WvDNticAAMu_mHKP/welcome-lichess-bots
+https://www.youtube.com/watch?v=4OaRCUHd12c

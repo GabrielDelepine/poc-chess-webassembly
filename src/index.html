@@ -34,6 +34,9 @@ dwwddw -->
         width: 500px;
         height: 500px;
       }
+      section {
+        margin-bottom: 0.6em;
+      }
     </style>
 
     <script type="importmap">
@@ -46,16 +49,55 @@ dwwddw -->
       }
     </script>
     <script defer type="module">
-      import { init } from "standalone-web-chess"
-      init(document.getElementById("chessground"))
+      import {
+        StandaloneWebChess,
+        SUPPORTED_ENGINES,
+      } from "standalone-web-chess"
+
+      const instance = new StandaloneWebChess(
+        document.getElementById("chessground")
+      )
+
+      // engine selection
+
+      const enginesSelect = document.getElementById("engine")
+
+      for (const engineName of ["", ...SUPPORTED_ENGINES]) {
+        const option = document.createElement("option")
+        option.setAttribute("name", engineName)
+        option.innerText = engineName
+
+        if (engineName === instance.currentEngineName) {
+          option.setAttribute("selected", "selected")
+        }
+
+        enginesSelect.appendChild(option)
+      }
+
+      enginesSelect.addEventListener("change", (event) => {
+        const engineName = event.target.value
+        instance.changeEngine(!engineName ? undefined : engineName)
+      })
+
+      // engine speed
+      instance.addEventListener("engineReturns", ({ duration }) => {
+        document.getElementById(
+          "duration"
+        ).innerText = `(last engine move took ${duration}ms)` // todo improve
+      })
     </script>
   </head>
 
   <body>
-    <section class="">
-      <div class="">
-        <div id="chessground"></div>
-      </div>
+    <section>
+      <label name="engine">
+        Chess engine:
+        <select id="engine"></select>
+      </label>
+      <span id="duration"></span>
+    </section>
+    <section>
+      <div id="chessground"></div>
     </section>
 
     <noscript>Please enable Javascript</noscript>
