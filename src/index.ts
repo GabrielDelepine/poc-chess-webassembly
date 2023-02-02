@@ -13,7 +13,10 @@ import type {
 // TODO fix promotion
 // TODO support various languages based on the browser setting
 
-export const SUPPORTED_ENGINES = ["random"] as const
+export const SUPPORTED_ENGINES = [
+  "random",
+  "stockfish", // https://github.com/lichess-org/stockfish.wasm/blob/master/index.html https://www.npmjs.com/package/stockfish.wasm
+] as const // todo, return name + url source code
 const SUPPORTED_EVENTS = ["engineReturns"] as const
 
 type Engine = (
@@ -27,6 +30,7 @@ export class StandaloneWebChess {
   #chess: Chess
   #currentEngineName?: string
   #onEngineReturns: Function[] = []
+  #sf: any // stockfish not ESM from
 
   constructor(
     el: HTMLElement,
@@ -56,6 +60,18 @@ export class StandaloneWebChess {
   async changeEngine(
     engineName?: (typeof SUPPORTED_ENGINES)[number]
   ): Promise<void> {
+    if (engineName === "stockfish") {
+      console.error(`
+      TODO create npm run serve with the following headers for index.html
+      - Cross-Origin-Embedder-Policy: require-corp
+      - Cross-Origin-Opener-Policy: same-origin
+
+      and the following header for node_modules/stockfish.wasm/*
+      - Cross-Origin-Embedder-Policy: require-corp
+`)
+      this.#sf = await (window as any).Stockfish()
+    }
+
     const after: Engine = this.#engines[engineName || "none"]
 
     const wrapper: Engine = (orig, dest, metadata) => {
@@ -114,6 +130,16 @@ export class StandaloneWebChess {
           dests: this.#getLegalMoves(),
         },
       })
+    },
+    stockfish: () => {
+      // need to promisify ?
+      this.#sf.addMessageListener((line: any) => {
+        debugger
+        console.log(line)
+      })
+
+      // TODO retrieve uci command
+      this.#sf.postMessage("uci")
     },
   }
 

@@ -19,6 +19,8 @@ Please read more about GPL for JavaScript on [greendrake.info](https://greendrak
 
 ## resources and others
 
+https://github.com/lichess-org/stockfish.wasm
+
 https://lichess.org/blog/YDOKRxQAACgAREB3/stockfish-13-nnue-on-lichess
 http://www.computerchess.org.uk/ccrl/4040/
 https://lichess.org/blog/WvDNticAAMu_mHKP/welcome-lichess-bots

@@ -39,6 +39,8 @@ dwwddw -->
       }
     </style>
 
+    <script src="../node_modules/stockfish.wasm/stockfish.js"></script>
+
     <script type="importmap">
       {
         "imports": {
@@ -76,7 +78,7 @@ dwwddw -->
 
       enginesSelect.addEventListener("change", (event) => {
         const engineName = event.target.value
-        instance.changeEngine(!engineName ? undefined : engineName)
+        instance.changeEngine(!engineName ? undefined : engineName) // TODO listen to promise to disable select, display loading and error
       })
 
       // engine speed
