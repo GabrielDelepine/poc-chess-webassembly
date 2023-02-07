@@ -14,22 +14,29 @@ dwwddw -->
     <link
       rel="stylesheet"
       type="text/css"
-      href="https://unpkg.com/chessground@8.3.7/assets/chessground.base.css"
+      href="../node_modules/chessground/assets/chessground.base.css"
     />
     <link
       rel="stylesheet"
       type="text/css"
-      href="https://unpkg.com/chessground@8.3.7/assets/chessground.brown.css"
+      href="../node_modules/chessground/assets/chessground.brown.css"
     />
     <!-- Board theme -->
     <link
       rel="stylesheet"
       type="text/css"
-      href="https://unpkg.com/chessground@8.3.7/assets/chessground.cburnett.css"
+      href="../node_modules/chessground/assets/chessground.cburnett.css"
     />
     <!-- Pieces theme -->
 
     <style>
+      @media (prefers-color-scheme: dark) {
+        body {
+          font-family: Helvetica, Arial, sans-serif;
+          color: rgba(255, 255, 255, 0.87);
+          background-color: #121212;
+        }
+      }
       #chessground {
         width: 500px;
         height: 500px;
@@ -41,12 +48,13 @@ dwwddw -->
 
     <script src="../node_modules/stockfish.wasm/stockfish.js"></script>
 
+    <!-- TO TEST: can a second importmap be present within a Web Component? -->
     <script type="importmap">
       {
         "imports": {
           "chessground": "../node_modules/chessground/chessground.js",
           "chess.js": "../node_modules/chess.js/dist/chess.js",
-          "standalone-web-chess": "../dist/index.js"
+          "standalone-web-chess": "../dist/standalone-web-chess.js"
         }
       }
     </script>
@@ -81,11 +89,31 @@ dwwddw -->
         instance.changeEngine(!engineName ? undefined : engineName) // TODO listen to promise to disable select, display loading and error
       })
 
-      // engine speed
+      // depth selection
+      const depthSelect = document.getElementById("depth")
+
+      // Todo: to disable if current engine does not support depth
+
+      depthSelect.querySelector(`option[value="${instance.currentEngineDepth}"]`)?.setAttribute('selected', 'selected')
+
+      depthSelect.addEventListener("change", (event) => {
+        const depth = event.target.value
+        instance.changeEngineDepth(depth)
+      })
+
+      const durationFormatter = new Intl.NumberFormat(undefined, {
+        style: "unit",
+        unit: "second",
+        unitDisplay: "long",
+        maximumFractionDigits: 3,
+      }).format
+
       instance.addEventListener("engineReturns", ({ duration }) => {
-        document.getElementById(
-          "duration"
-        ).innerText = `(last engine move took ${duration}ms)` // todo improve
+        const text = `(engine calculation time of the last move: ${durationFormatter(
+          duration / 1000
+        )}`
+
+        document.getElementById("duration").innerText = text
       })
     </script>
   </head>
@@ -95,6 +123,44 @@ dwwddw -->
       <label name="engine">
         Chess engine:
         <select id="engine"></select>
+      </label>
+      <span id="duration"></span>
+    </section>
+    <section>
+      <label name="engine">
+        Depth:
+        <select id="depth">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
+          <option value="11">11</option>
+          <option value="12">12</option>
+          <option value="13">13</option>
+          <option value="14">14</option>
+          <option value="15">15</option>
+          <option value="16">16</option>
+          <option value="17">17</option>
+          <option value="18">18</option>
+          <option value="19">19</option>
+          <option value="20">20</option>
+          <option value="21">21</option>
+          <option value="22">22</option>
+          <option value="23">23</option>
+          <option value="24">24</option>
+          <option value="25">25</option>
+          <option value="26">26</option>
+          <option value="27">27</option>
+          <option value="28">28</option>
+          <option value="29">29</option>
+          <option value="30">30</option>
+        </select>
       </label>
       <span id="duration"></span>
     </section>

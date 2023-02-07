@@ -12,6 +12,6 @@
     "verbatimModuleSyntax": true
   },
   "exclude": ["node_modules"],
-  "include": ["node_modules/**/*.js", "src/index.ts"],
+  "include": ["node_modules/**/*.js", "src/**/*.ts"],
   "lib": ["dom", "ES2022"]
 }

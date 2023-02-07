@@ -1,6 +1,7 @@
 ## Known bugs
 
 - promotion
+- pat
 
 ## Dependencies
 
@@ -19,9 +20,17 @@ Please read more about GPL for JavaScript on [greendrake.info](https://greendrak
 
 ## resources and others
 
-https://github.com/lichess-org/stockfish.wasm
+- https://github.com/lichess-org/stockfish.wasm
 
-https://lichess.org/blog/YDOKRxQAACgAREB3/stockfish-13-nnue-on-lichess
-http://www.computerchess.org.uk/ccrl/4040/
-https://lichess.org/blog/WvDNticAAMu_mHKP/welcome-lichess-bots
-https://www.youtube.com/watch?v=4OaRCUHd12c
+- https://github.com/lichess-org/chessground-examples
+
+- https://lichess.org/blog/YDOKRxQAACgAREB3/stockfish-13-nnue-on-lichess
+- http://www.computerchess.org.uk/ccrl/4040/
+- https://lichess.org/blog/WvDNticAAMu_mHKP/welcome-lichess-bots
+- https://www.youtube.com/watch?v=4OaRCUHd12c
+
+- https://www.youtube.com/watch?v=PHvT3QShPTo
+
+## idea of improvement
+
+- Translate https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/i18n
