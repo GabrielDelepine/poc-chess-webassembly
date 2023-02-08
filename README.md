@@ -20,17 +20,19 @@ Please read more about GPL for JavaScript on [greendrake.info](https://greendrak
 
 ## resources and others
 
-- https://github.com/lichess-org/stockfish.wasm
+- [stockfish.wasm](https://github.com/lichess-org/stockfish.wasm)
 
-- https://github.com/lichess-org/chessground-examples
+- [chessground-examples](https://github.com/lichess-org/chessground-examples)
 
-- https://lichess.org/blog/YDOKRxQAACgAREB3/stockfish-13-nnue-on-lichess
-- http://www.computerchess.org.uk/ccrl/4040/
-- https://lichess.org/blog/WvDNticAAMu_mHKP/welcome-lichess-bots
-- https://www.youtube.com/watch?v=4OaRCUHd12c
+- [Stockfish 13 NNUE on Lichess](https://lichess.org/blog/YDOKRxQAACgAREB3/stockfish-13-nnue-on-lichess)
+- [computerchess](http://www.computerchess.org.uk/ccrl/4040/)
+- [Welcome Lichess Bots](https://lichess.org/blog/WvDNticAAMu_mHKP/welcome-lichess-bots)
+- [Ultimate Chess Thinking Algorithm For Adult Chess Improvers](https://www.youtube.com/watch?v=4OaRCUHd12c)
 
-- https://www.youtube.com/watch?v=PHvT3QShPTo
+- [WASM is not ready](https://www.youtube.com/watch?v=PHvT3QShPTo)
 
 ## idea of improvement
 
 - Translate https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/i18n
+- picture in picture https://developer.chrome.com/docs/web-platform/document-picture-in-picture/
+- menu https://codepen.io/kylelavery88/pen/abbvGRN https://devsnap.me/css-menu
